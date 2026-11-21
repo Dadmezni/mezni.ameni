@@ -1,467 +1,176 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>الأنشطة الإنتاجية | Productive Activities</title>
+  <title>قسم المواد الإلزامية | الأنشطة الإنتاجية</title>
+  <meta name="description" content="قسم المواد الإلزامية · مدرسة الشرق الأوسط الدولية — الأنشطة الإنتاجية، المرحلة الثانوية 2026–2027">
+  <meta name="theme-color" content="#0a2a5c">
   <link rel="icon" type="image/png" href="img/p1_logo.png">
-  <meta name="claude:viewport-fit-sides" content="cover">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ═══ Design System & Tokens ═══ */
-    :root {
-      color-scheme: light;
-      --bg: #f4f7f9;
-      --bg-deep: #e6ecef;
-      --fg: #0f172a;
-      --fg-soft: #334155;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --line-2: #cbd5e1;
-      
-      /* Couleurs tirées du logo (Navy & Teal) */
-      --accent-navy: #0a2a5c;
-      --accent-teal: #0d6e63;
-      --accent-fg: #ffffff;
-      
-      --panel: rgba(255, 255, 255, 0.85);
-      --stage: #050a0f;
-      
-      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 32px 64px rgba(15, 23, 42, 0.15), 0 8px 24px rgba(15, 23, 42, 0.08);
-      
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      
-      --font-ar: "Cairo", sans-serif;
-      --font-en: "Outfit", sans-serif;
-      --font-current: var(--font-ar);
-    }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #06090f;
-        --bg-deep: #020408;
-        --fg: #f8fafc;
-        --fg-soft: #cbd5e1;
-        --muted: #94a3b8;
-        --line: #1e293b;
-        --line-2: #334155;
-        --accent-navy: #60a5fa;
-        --accent-teal: #5fcebe;
-        --accent-fg: #0f172a;
-        --panel: rgba(15, 23, 42, 0.7);
-        --stage: #000000;
-        color-scheme: dark;
-      }
-    }
-
-    * { box-sizing: border-box; }
-    img { max-width: 100%; }
-    [hidden]:not([hidden=until-found i]) { display: none !important; }
-    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
-
-    /* ═══ Global Layout ═══ */
-    body {
-      margin: 0;
-      padding-block: 32px 48px;
-      padding-left: max(20px, env(safe-area-inset-left, 0px));
-      padding-right: max(20px, env(safe-area-inset-right, 0px));
-      font: 15px/1.6 var(--font-current);
-      color: var(--fg);
-      background: 
-        radial-gradient(circle at 50% -20%, rgba(10, 42, 92, 0.08), transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
-      background-attachment: fixed;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.5s ease;
-    }
-
-    /* Ajustement de la police selon la langue */
-    [lang="en"] body { --font-current: var(--font-en); }
-    [lang="ar"] body { --font-current: var(--font-ar); }
-
-    .wrap {
-      max-width: 1120px;
-      margin-inline: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    /* ═══ Header Élégant ═══ */
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      height: 70px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 16px rgba(10, 42, 92, 0.15));
-      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .brand-logo:hover { transform: scale(1.05) translateY(-2px); }
-
-    .headline { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-
-    h1 {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 800;
-      margin: 0;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--accent-navy) 0%, var(--accent-teal) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-wrap: balance;
-    }
-
-    .sub {
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-
-    /* Contrôles de langue */
-    .lang-switch {
-      display: flex;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 4px;
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(12px);
-    }
-    .lang-btn {
-      background: transparent;
-      border: 0;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-family: var(--font-en);
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .lang-btn.active {
-      background: var(--accent-navy);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(10, 42, 92, 0.3);
-    }
-    .lang-btn:hover:not(.active) { color: var(--fg); }
-
-    /* ═══ Scène Vidéo ═══ */
-    .stage {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: radial-gradient(ellipse at center, #111e28 0%, var(--stage) 100%);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      isolation: isolate;
-      user-select: none;
-      -webkit-user-select: none;
-      box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    }
-    @media (max-width: 640px) { .stage { aspect-ratio: 4/5; } }
-    .stage:fullscreen { aspect-ratio: auto; width: 100vw; height: 100vh; border-radius: 0; }
-
-    .slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
-    .slide.on { opacity: 1; z-index: 2; will-change: transform, opacity, clip-path; }
-    .slide.out { opacity: 1; z-index: 1; will-change: transform, opacity; }
-    
-    .bg { position: absolute; inset: -8%; width: 116%; height: 116%; object-fit: cover; filter: blur(32px) saturate(1.2); opacity: 0.6; }
-    .fg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transform-origin: var(--o, 50% 50%); }
-
-    /* Ken Burns */
-    .slide.on .fg, .slide.out .fg { animation: kb var(--d, 6s) cubic-bezier(0.3, 0.1, 0.3, 1) forwards; }
-    .slide.zo.on .fg, .slide.zo.out .fg { animation-name: kbo; }
-    .stage.paused .slide.on .fg, .stage.paused .slide.out .fg { animation-play-state: paused; }
-    @keyframes kb { from { transform: scale(1) translate(0,0); } to { transform: scale(var(--z, 1.1)) translate(var(--tx, 0), var(--ty, 0)); } }
-    @keyframes kbo { from { transform: scale(var(--z, 1.1)) translate(var(--tx, 0), var(--ty, 0)); } to { transform: scale(1) translate(0,0); } }
-
-    /* Transitions entre diapositives */
-    .slide.on[data-tr] { animation-duration: var(--trd, 1.15s); animation-timing-function: cubic-bezier(0.65, 0, 0.2, 1); animation-fill-mode: backwards; }
-    .slide.out[data-tr] { animation-duration: var(--trd, 1.15s); animation-timing-function: cubic-bezier(0.65, 0, 0.2, 1); animation-fill-mode: both; }
-    .slide.on[data-tr=zoom] { animation-name: inZoom; } .slide.out[data-tr=zoom] { animation-name: outZoom; }
-    .slide.on[data-tr=push] { animation-name: inPush; } .slide.out[data-tr=push] { animation-name: outPush; }
-    .slide.on[data-tr=wipe] { animation-name: inWipe; } .stage[data-dir="-1"] .slide.on[data-tr=wipe] { animation-name: inWipeR; } .slide.out[data-tr=wipe] { animation-name: outWipe; }
-    .slide.on[data-tr=rise] { animation-name: inRise; } .slide.out[data-tr=rise] { animation-name: outRise; }
-    
-    @keyframes inZoom { from { opacity: 0; transform: scale(1.12); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
-    @keyframes outZoom { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(0.94); } }
-    @keyframes inPush { from { transform: translateX(calc(var(--dir, 1) * -100%)); } to { transform: none; } }
-    @keyframes outPush { from { opacity: 1; transform: none; } to { opacity: 0.3; transform: translateX(calc(var(--dir, 1) * 32%)); } }
-    @keyframes inWipe { from { clip-path: inset(0 100% 0 0); transform: scale(1.08); } to { clip-path: inset(0 0 0 0); transform: none; } }
-    @keyframes inWipeR { from { clip-path: inset(0 0 0 100%); transform: scale(1.08); } to { clip-path: inset(0 0 0 0); transform: none; } }
-    @keyframes outWipe { from { opacity: 1; transform: none; } to { opacity: 0.35; transform: scale(1.05); } }
-    @keyframes inRise { from { clip-path: inset(100% 0 0 0); transform: translateY(7%); } to { clip-path: inset(0 0 0 0); transform: none; } }
-    @keyframes outRise { from { opacity: 1; transform: none; } to { opacity: 0.35; transform: translateY(-9%); } }
-
-    /* Galerie */
-    .gp { position: absolute; inset: 0; opacity: 0; transform: scale(1.05); transition: opacity 0.9s ease, transform 1.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
-    .gp.on { opacity: 1; transform: none; }
-    .slide.gal .fg { animation: none; }
-    .slide.gal .gp.on .fg { animation: kb var(--gd, 4s) cubic-bezier(0.3, 0.1, 0.3, 1) forwards; }
-    .slide.gal .gp.zo.on .fg { animation-name: kbo; }
-
-    /* Diapositive d'accueil (Scène complexe) */
-    .slide.first { background: #c8cacc; container-type: size; }
-    .scene { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: min(100cqw, calc(100cqh * 838 / 472)); aspect-ratio: 838/472; }
-    .ly { position: absolute; }
-    .ly img { display: block; width: 100%; height: 100%; }
-    .slide.on .ly.tx, .slide.out .ly.tx { animation: txt 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) var(--dl) both; }
-    .slide.on .ly.ob, .slide.out .ly.ob { animation: var(--in) 1s cubic-bezier(0.2, 0.9, 0.3, 1.12) var(--dl) both, bob var(--bd, 3.6s) ease-in-out calc(var(--dl) + 1s) infinite alternate; }
-    .stage.rest .slide .ly { animation: none !important; }
-    .stage.paused .slide.on .ly, .stage.paused .slide.out .ly { animation-play-state: paused; }
-    @keyframes txt { from { opacity: 0; clip-path: inset(0 0 0 100%); transform: translateY(12px); } to { opacity: 1; clip-path: inset(0 0 0 0); transform: none; } }
-    @keyframes popin { 0% { opacity: 0; transform: scale(0.35) rotate(-10deg); } 60% { opacity: 1; transform: scale(1.1) rotate(2deg); } 100% { opacity: 1; transform: none; } }
-    @keyframes fromL { from { opacity: 0; transform: translateX(-110px) rotate(-28deg) scale(0.7); } to { opacity: 1; transform: none; } }
-    @keyframes fromB { from { opacity: 0; transform: translateY(130px) rotate(5deg); } to { opacity: 1; transform: none; } }
-    @keyframes fromR { from { opacity: 0; transform: translateX(120px) rotate(16deg); } to { opacity: 1; transform: none; } }
-    @keyframes bob { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(var(--by, -6px)) rotate(var(--br, 2deg)); } }
-    @keyframes rmIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes rmOut { from { opacity: 1; } to { opacity: 0; } }
-
-    /* Badge compteur */
-    .count {
-      position: absolute; top: 16px; inset-inline-start: 20px; z-index: 5;
-      display: flex; align-items: baseline; gap: 6px; direction: ltr;
-      padding: 8px 14px; border-radius: 999px;
-      background: rgba(4, 8, 12, 0.45); color: #fff;
-      font-size: 0.85rem; font-weight: 600; font-variant-numeric: tabular-nums;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      -webkit-backdrop-filter: blur(12px) saturate(1.5); backdrop-filter: blur(12px) saturate(1.5);
-      transition: opacity 0.4s ease; pointer-events: none;
-    }
-    .count b { font-weight: 700; display: inline-block; }
-    .count span { opacity: 0.6; font-weight: 500; }
-    .count b.flip { animation: cnt 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
-    @keyframes cnt { from { opacity: 0; transform: translateY(60%); } to { opacity: 1; transform: none; } }
-    .stage.idle:not(.paused) .count { opacity: 0; }
-
-    /* Effet de balayage lumineux */
-    .sweep {
-      position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0;
-      background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.12) 50%, transparent 62%);
-    }
-    .sweep.go { animation: sweep 1.2s cubic-bezier(0.65, 0, 0.2, 1); }
-    @keyframes sweep { 0% { opacity: 0; transform: translateX(calc(var(--dir, 1) * -100%)); } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateX(calc(var(--dir, 1) * 100%)); } }
-
-    /* Diapositive de fin (Outro) */
-    .slide.outro { background: radial-gradient(ellipse at 50% 40%, #ffffff 0%, #e2e8f0 60%, #cbd5e1 100%); container-type: size; }
-    .outro-wrap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(12px, 4cqh, 32px); text-align: center; padding: 0 5cqw; }
-    .lg { position: relative; display: grid; place-items: center; width: min(32cqw, 44cqh); }
-    .lg img { display: block; width: 100%; height: auto; position: relative; z-index: 1; filter: drop-shadow(0 12px 24px rgba(10, 42, 92, 0.2)); }
-    .lg::before, .lg::after { content: ""; position: absolute; inset: -14%; border-radius: 50%; border: 2px solid rgba(10, 42, 92, 0.25); opacity: 0; }
-    .thx { margin: 0; font-weight: 800; font-size: clamp(1.8rem, 7cqw, 4.8rem); line-height: 1.2; color: var(--accent-navy); text-wrap: balance; }
-    .rule { height: 4px; width: 0; border-radius: 2px; background: linear-gradient(90deg, var(--accent-navy), var(--accent-teal)); }
-    .slide.outro.on .lg img, .slide.outro.out .lg img { animation: popin 1s cubic-bezier(0.2, 0.9, 0.3, 1.12) 0.45s both, bob 3.8s ease-in-out 1.5s infinite alternate; --by: -8px; --br: 0deg; }
-    .slide.outro.on .lg::before, .slide.outro.out .lg::before { animation: ring 3.2s ease-out 1.2s infinite; }
-    .slide.outro.on .lg::after, .slide.outro.out .lg::after { animation: ring 3.2s ease-out 2.8s infinite; }
-    .slide.outro.on .rule, .slide.outro.out .rule { animation: ruleIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 1.3s both; }
-    .slide.outro.on .thx, .slide.outro.out .thx { animation: txt 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 1.8s both; }
-    @keyframes ring { 0% { opacity: 0.55; transform: scale(0.8); } 100% { opacity: 0; transform: scale(1.55); } }
-    @keyframes ruleIn { from { width: 0; } to { width: min(30cqw, 280px); } }
-    .stage.paused .slide.outro .lg img, .stage.paused .slide.outro .lg::before, .stage.paused .slide.outro .lg::after, .stage.paused .slide.outro .rule, .stage.paused .slide.outro .thx { animation-play-state: paused; }
-
-    /* ═══ UI Controls (Glassmorphism Premium) ═══ */
-    .ui {
-      position: absolute; inset-inline: 0; bottom: 0; z-index: 5;
-      padding: 40px 20px 20px;
-      display: flex; flex-direction: column; gap: 12px;
-      background: linear-gradient(to top, rgba(5, 10, 15, 0.95) 0%, rgba(5, 10, 15, 0.6) 50%, rgba(5, 10, 15, 0) 100%);
-      color: #fff; transition: opacity 0.4s ease;
-    }
-    .stage.idle:not(.paused) .ui { opacity: 0; }
-
-    .segs { display: flex; gap: 6px; direction: inherit; }
-    .seg { flex: 1; height: 16px; padding: 6px 0; background: none; border: 0; cursor: pointer; position: relative; }
-    .seg::before { content: ""; position: absolute; inset-inline: 0; top: 6px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.2); transition: background 0.2s; }
-    .seg:hover::before { background: rgba(255, 255, 255, 0.4); }
-    .seg i { position: absolute; inset-inline-start: 0; top: 6px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #fff, #e2e8f0); width: 0; display: block; box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
-
-    .bar { display: flex; align-items: center; gap: 8px; }
-    .sp { flex: 1; }
-    
-    .btn {
-      width: 44px; height: 44px; border-radius: 50%; border: 0;
-      background: transparent; color: #fff;
-      display: grid; place-items: center; cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.05); }
-    .btn:active { transform: scale(0.95); }
-    .btn svg { width: 22px; height: 22px; fill: currentColor; }
-    .btn.main { background: #fff; color: #0a1218; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-    .btn.main:hover { background: #f1f5f9; }
-    
-    .time { font-variant-numeric: tabular-nums; font-size: 0.9rem; font-weight: 500; opacity: 0.9; direction: ltr; padding-inline: 8px; }
-
-    :focus-visible { outline: 2px solid var(--accent-teal); outline-offset: 3px; }
-    .ui :focus-visible, .cover :focus-visible { outline-color: #fff; }
-
-    /* ═══ Écran d'Accueil (Cover) ═══ */
-    .cover {
-      position: absolute; inset: 0; z-index: 6;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-      background: rgba(5, 10, 15, 0.7);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
-      color: #fff; text-align: center; transition: opacity 0.4s ease;
-    }
-    .cover[hidden] { display: none !important; }
-    .cover-logo { height: clamp(80px, 15vh, 120px); width: auto; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5)); animation: coverFadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-    @keyframes coverFadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.9); } to { opacity: 1; transform: none; } }
-    
-    .big {
-      position: relative; width: 96px; height: 96px; border-radius: 50%; border: 0;
-      background: linear-gradient(135deg, var(--accent-navy) 0%, var(--accent-teal) 100%);
-      color: #fff; display: grid; place-items: center; cursor: pointer;
-      box-shadow: 0 20px 48px rgba(10, 42, 92, 0.5), 0 8px 16px rgba(0,0,0,0.3);
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .big::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); animation: coverPulse 3s ease-out infinite; pointer-events: none; }
-    @keyframes coverPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
-    .big:hover { transform: scale(1.08); box-shadow: 0 24px 56px rgba(10, 42, 92, 0.6), 0 10px 20px rgba(0,0,0,0.4); }
-    .big:active { transform: scale(0.95); }
-    .big svg { width: 42px; height: 42px; fill: currentColor; }
-    
-    .cover b { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; margin-top: 8px; }
-    .cover span { font-size: 1rem; font-weight: 400; opacity: 0.8; }
-
-    /* ═══ Thumbnails (Miniatures) ═══ */
-    .thumbs {
-      display: flex; gap: 12px; overflow-x: auto;
-      padding: 12px 4px 16px;
-      scroll-snap-type: x proximity; direction: inherit;
-      scrollbar-width: thin; scrollbar-color: var(--line-2) transparent;
-      -webkit-mask: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
-      mask: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
-    }
-    .th {
-      flex: 0 0 auto; width: 112px; height: 76px; padding: 0;
-      border: 2px solid transparent; border-radius: 12px; overflow: hidden;
-      background: var(--panel); cursor: pointer; position: relative; scroll-snap-align: center;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .th img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.7; transition: opacity 0.3s; }
-    .th:hover img { opacity: 1; }
-    .th:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12); }
-    .th[aria-current="true"] { border-color: var(--accent-teal); transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 28px rgba(13, 110, 99, 0.3); }
-    .th[aria-current="true"] img { opacity: 1; }
-    .th em {
-      position: absolute; inset-inline-end: 6px; bottom: 6px; font-style: normal; font-size: 0.7rem; font-weight: 700; line-height: 1;
-      padding: 4px 8px; border-radius: 6px; background: rgba(5, 10, 15, 0.8); color: #fff;
-      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    /* ═══ Hint Text ═══ */
-    .hint {
-      color: var(--muted); font-size: 0.9rem; margin: 8px 0 0;
-      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
-    }
-    .hint span { display: inline-flex; align-items: center; gap: 8px; }
-    .hint b {
-      font-weight: 600; color: var(--fg-soft); background: var(--panel);
-      padding: 4px 10px; border-radius: 8px; font-size: 0.8rem;
-      border: 1px solid var(--line); box-shadow: var(--shadow-sm);
-    }
-
-    /* ═══ Accessibilité : Réduction des animations ═══ */
-    @media (prefers-reduced-motion: reduce) {
-      .slide.on[data-tr] { animation: rmIn 0.3s both; }
-      .slide.out[data-tr] { animation: rmOut 0.3s both; }
-      .slide.on .fg, .slide.out .fg { animation: none; }
-      .slide.on .ly, .slide.out .ly { animation: none !important; }
-      .slide.gal .gp.on .fg { animation: none; }
-      .gp { transform: none; transition: opacity 0.3s; }
-      .sweep { display: none; }
-      .count b.flip { animation: none; }
-      .big::after { display: none; }
-      .slide.outro .lg img, .slide.outro .lg::before, .slide.outro .lg::after, .slide.outro .rule, .slide.outro .thx { animation: none !important; }
-      .slide.outro .lg::before, .slide.outro .lg::after { display: none; }
-      .slide.outro .rule { width: min(30cqw, 280px); }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="brand">
-      <!-- Logo officiel -->
-      <img src="img/p1_logo.png" alt="Logo" class="brand-logo">
-      <div class="headline">
-        <h1 id="ui-title">الأنشطة الإنتاجية</h1>
-        <span class="sub" id="ui-sub">المرحلة الثانوية · العام الأكاديمي 2026–2027</span>
-      </div>
-    </div>
-    
-    <!-- Bouton de changement de langue -->
+<a class="skip" href="#presentation" data-i18n="skip">انتقل إلى العرض</a>
+
+<!-- ═══ Barre supérieure ═══ -->
+<header class="topbar">
+  <div class="container topbar-in">
+    <a class="tb-brand" href="#top">
+      <img src="img/p1_logo.png" alt="">
+      <span data-i18n="brandShort">قسم المواد الإلزامية</span>
+    </a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#presentation" data-tab="presentation" class="on" data-i18n="tabPresentation">العرض التقديمي</a>
+      <a href="#photos" data-tab="photos" data-i18n="tabPhotos">الصور</a>
+    </nav>
+    <span class="sp"></span>
     <div class="lang-switch" role="group" aria-label="Language / اللغة">
-      <button class="lang-btn active" data-lang="ar" onclick="setLanguage('ar')">عربي</button>
-      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
-    </div>
-  </header>
-
-  <div class="stage paused" id="stage" aria-label="Presentation Stage">
-    <div id="slides"></div>
-    <div class="sweep" id="sweep" aria-hidden="true"></div>
-    <div class="count" id="count" aria-hidden="true"><b id="cn">01</b><span id="ctot">/ 00</span></div>
-
-    <div class="cover" id="cover">
-      <img src="img/p1_logo.png" alt="Logo" class="cover-logo">
-      <button class="big" id="bigplay" type="button" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l11-6.8a1 1 0 0 0 0-1.8l-11-6.8A1 1 0 0 0 8 5.2z"/></svg></button>
-      <b id="covt">تشغيل العرض</b>
-      <span id="covs"></span>
-    </div>
-
-    <div class="ui" id="ui">
-      <div class="segs" id="segs"></div>
-      <div class="bar">
-        <button class="btn main" id="pp" type="button" aria-label="Play/Pause"><svg viewBox="0 0 24 24" id="ppi" aria-hidden="true"></svg></button>
-        <button class="btn" id="prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h2v12H7zM20 6.6v10.8a.8.8 0 0 1-1.2.7L10.6 12.7a.8.8 0 0 1 0-1.4l8.2-4.9a.8.8 0 0 1 1.2.7z" transform="translate(24 0) scale(-1 1)"/></svg></button>
-        <button class="btn" id="next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6h2v12h-2zM4 6.6v10.8a.8.8 0 0 0 1.2.7l8.2-4.9a.8.8 0 0 0 0-1.4L5.2 5.9A.8.8 0 0 0 4 6.6z"/></svg></button>
-        <span class="time" id="time">0:00 / 0:00</span>
-        <span class="sp"></span>
-        <button class="btn" id="mute" type="button" aria-label="Mute" aria-pressed="false"><svg viewBox="0 0 24 24" id="mi" aria-hidden="true"></svg></button>
-        <button class="btn" id="fs" type="button" aria-label="Fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z"/></svg></button>
-      </div>
+      <button class="lang-btn active" data-lang="ar" aria-pressed="true" onclick="setLanguage('ar')">عربي</button>
+      <button class="lang-btn" data-lang="en" aria-pressed="false" onclick="setLanguage('en')">EN</button>
     </div>
   </div>
+</header>
 
-  <div class="thumbs" id="thumbs" role="list"></div>
-  
-  <p class="hint" id="ui-hint">
-    <span><b>مسافة</b>تشغيل / إيقاف</span>
-    <span aria-hidden="true">·</span>
-    <span><b>الأسهم</b>التنقل بين الشرائح</span>
-  </p>
-</div>
+<main id="top">
+  <!-- ═══ Bannière ═══ -->
+  <div class="banner" aria-hidden="true"></div>
+
+  <div class="container profile">
+
+    <!-- ═══ Identité : bloc principal ═══ -->
+    <div class="id-main">
+      <div class="avatar"><img src="img/p1_logo.png" alt="" data-i18n-attr="alt:logoAlt"></div>
+
+      <h1 data-i18n="deptName">قسم المواد الإلزامية</h1>
+      <p class="school" data-i18n="school">مدرسة الشرق الأوسط الدولية</p>
+      <p class="bio" data-i18n="bio"></p>
+
+      <div class="actions">
+        <button class="cta" id="pf-play" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l11-6.8a1 1 0 0 0 0-1.8l-11-6.8A1 1 0 0 0 8 5.2z"/></svg>
+          <span data-i18n="ctaPlay">تشغيل العرض</span>
+        </button>
+        <div class="actions-row">
+          <button class="ghost" id="pf-fs" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z"/></svg>
+            <span data-i18n="ctaFs">ملء الشاشة</span>
+          </button>
+          <button class="ghost" id="pf-share" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.1c-.8 0-1.5.3-2 .8l-7.1-4.2c.1-.2.1-.5.1-.7s0-.5-.1-.7L16 7.2c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .2 0 .5.1.7L8 9.8C7.5 9.3 6.8 9 6 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.2 4.2c-.1.2-.1.4-.1.6 0 1.6 1.3 2.9 2.9 2.9s2.9-1.3 2.9-2.9-1.2-2.9-2.9-2.9z"/></svg>
+            <span data-i18n="share">مشاركة</span>
+          </button>
+        </div>
+      </div>
+
+      <dl class="facts">
+        <div><dt data-i18n="statSlides">شريحة</dt><dd id="f-slides" class="num">0</dd></div>
+        <div><dt data-i18n="statDuration">مدة العرض</dt><dd id="f-dur" class="num">0:00</dd></div>
+        <div><dt data-i18n="statPhotos">صور</dt><dd id="f-photos" class="num">0</dd></div>
+      </dl>
+
+    </div>
+
+    <div class="id-more">
+      <dl class="details">
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+          <dt data-i18n="lblStage">المرحلة</dt><dd data-i18n="valStage">الثانوية</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10z"/></svg>
+          <dt data-i18n="lblYear">العام الدراسي</dt><dd class="num">2026–2027</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15l-4-4 1.41-1.41L11 13.17l5.59-5.59L18 9l-7 7z"/></svg>
+          <dt data-i18n="lblValue">القيمة</dt><dd data-i18n="valValue">الإبحار الآمن</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+          <dt data-i18n="lblActivity">النشاط</dt><dd data-i18n="valActivity">الأنشطة الإنتاجية</dd>
+        </div>
+      </dl>
+
+      <h2 class="mini" data-i18n="topicsTitle">محاور العرض</h2>
+      <ul class="chips">
+        <li data-i18n="t1">استثمار الوقت وإدارته</li>
+        <li data-i18n="t2">الوقت في القرآن والسنة</li>
+        <li data-i18n="t3">الإبحار الرقمي المتوازن</li>
+        <li data-i18n="t4">الخصوصية والأمان</li>
+        <li data-i18n="t5">أدب التواصل</li>
+        <li data-i18n="t6">الوعي الرقمي</li>
+      </ul>
+    </div>
+
+    <!-- ═══ Contenu ═══ -->
+    <div class="content">
+
+      <section class="deck" id="presentation" aria-labelledby="ui-title">
+        <div class="sec-h">
+          <h2 id="ui-title" data-i18n="deckTitle">الأنشطة الإنتاجية</h2>
+          <p class="sub" id="ui-sub" data-i18n="deckSub">المرحلة الثانوية · العام الأكاديمي 2026–2027</p>
+        </div>
+
+        <div class="stage paused" id="stage" tabindex="0" aria-label="Presentation">
+          <div id="slides"></div>
+          <div class="sweep" id="sweep" aria-hidden="true"></div>
+          <div class="count" id="count" aria-hidden="true"><b id="cn">01</b><span id="ctot">/ 00</span></div>
+
+          <div class="cover" id="cover">
+            <img src="img/p1_logo.png" alt="" class="cover-logo">
+            <button class="big" id="bigplay" type="button" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l11-6.8a1 1 0 0 0 0-1.8l-11-6.8A1 1 0 0 0 8 5.2z"/></svg></button>
+            <b id="covt">تشغيل العرض</b>
+            <span id="covs"></span>
+          </div>
+
+          <div class="ui" id="ui">
+            <div class="segs" id="segs"></div>
+            <div class="bar">
+              <button class="btn main" id="pp" type="button" aria-label="Play/Pause"><svg viewBox="0 0 24 24" id="ppi" aria-hidden="true"></svg></button>
+              <button class="btn" id="prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h2v12H7zM20 6.6v10.8a.8.8 0 0 1-1.2.7L10.6 12.7a.8.8 0 0 1 0-1.4l8.2-4.9a.8.8 0 0 1 1.2.7z" transform="translate(24 0) scale(-1 1)"/></svg></button>
+              <button class="btn" id="next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6h2v12h-2zM4 6.6v10.8a.8.8 0 0 0 1.2.7l8.2-4.9a.8.8 0 0 0 0-1.4L5.2 5.9A.8.8 0 0 0 4 6.6z"/></svg></button>
+              <span class="time" id="time">0:00 / 0:00</span>
+              <span class="sp"></span>
+              <button class="btn" id="mute" type="button" aria-label="Mute" aria-pressed="false"><svg viewBox="0 0 24 24" id="mi" aria-hidden="true"></svg></button>
+              <button class="btn" id="fs" type="button" aria-label="Fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="thumbs" id="thumbs" role="list"></div>
+
+        <p class="hint" id="ui-hint">
+          <span><b>مسافة</b>تشغيل / إيقاف</span>
+          <span aria-hidden="true">·</span>
+          <span><b>الأسهم</b>التنقل بين الشرائح</span>
+        </p>
+      </section>
+
+      <section class="photos" id="photos" aria-labelledby="photos-title">
+        <div class="sec-h">
+          <h2 id="photos-title" data-i18n="photosTitle">صور من الأنشطة</h2>
+          <p class="sub" data-i18n="photosSub">اضغط على صورة لعرضها ضمن الشرائح</p>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <img src="img/p1_logo.png" alt="">
+    <p data-i18n="footer">© 2026–2027 مدرسة الشرق الأوسط الدولية · قسم المواد الإلزامية</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 // ═════════════════════════════════════════════════════════════════
@@ -469,10 +178,45 @@
 // ═════════════════════════════════════════════════════════════════
 const dict = {
   ar: {
-    title: "الأنشطة الإنتاجية",
-    subtitle: "المرحلة الثانوية · العام الأكاديمي 2026–2027",
+    docTitle: "قسم المواد الإلزامية | الأنشطة الإنتاجية",
+    skip: "انتقل إلى العرض",
+    brandShort: "قسم المواد الإلزامية",
+    tabPresentation: "العرض التقديمي",
+    tabPhotos: "الصور",
+    logoAlt: "شعار قسم المواد الإلزامية – مدرسة الشرق الأوسط الدولية",
+    deptName: "قسم المواد الإلزامية",
+    school: "مدرسة الشرق الأوسط الدولية",
+    bio: "نعرض هنا الأنشطة الإنتاجية لطلبة المرحلة الثانوية: أبحاثٌ وملصقات وصور من الأنشطة حول قيمة الإبحار الآمن واستثمار الوقت.",
+    ctaPlay: "تشغيل العرض",
+    ctaFs: "ملء الشاشة",
+    share: "مشاركة",
+    copied: "تم نسخ الرابط",
+    statSlides: "شريحة",
+    statDuration: "مدة العرض",
+    statPhotos: "صور",
+    lblStage: "المرحلة",
+    valStage: "الثانوية",
+    lblYear: "العام الدراسي",
+    lblValue: "القيمة",
+    valValue: "الإبحار الآمن",
+    lblActivity: "النشاط",
+    valActivity: "الأنشطة الإنتاجية",
+    topicsTitle: "محاور العرض",
+    t1: "استثمار الوقت وإدارته",
+    t2: "الوقت في القرآن والسنة",
+    t3: "الإبحار الرقمي المتوازن",
+    t4: "الخصوصية والأمان",
+    t5: "أدب التواصل",
+    t6: "الوعي الرقمي",
+    deckTitle: "الأنشطة الإنتاجية",
+    deckSub: "المرحلة الثانوية · العام الأكاديمي 2026–2027",
+    photosTitle: "صور من الأنشطة",
+    photosSub: "اضغط على صورة لعرضها ضمن الشرائح",
+    photoLabel: "صورة",
+    footer: "© 2026–2027 مدرسة الشرق الأوسط الدولية · قسم المواد الإلزامية",
     play: "تشغيل العرض",
     replay: "إعادة العرض",
+    slidesWord: "شريحة",
     hintSpace: "مسافة",
     hintSpaceText: "تشغيل / إيقاف",
     hintArrows: "الأسهم",
@@ -481,10 +225,45 @@ const dict = {
     outroText: "شكرا على المتابعة"
   },
   en: {
-    title: "Productive Activities",
-    subtitle: "High School · Academic Year 2026–2027",
+    docTitle: "Compulsory Subjects Department | Productive Activities",
+    skip: "Skip to the presentation",
+    brandShort: "Compulsory Subjects",
+    tabPresentation: "Presentation",
+    tabPhotos: "Photos",
+    logoAlt: "Compulsory Subjects Department logo – Middle East International School",
+    deptName: "Compulsory Subjects Department",
+    school: "Middle East International School",
+    bio: "The productive activities of our high school students: research, posters and photos from the activities on safe digital navigation and the value of time.",
+    ctaPlay: "Play presentation",
+    ctaFs: "Fullscreen",
+    share: "Share",
+    copied: "Link copied",
+    statSlides: "Slides",
+    statDuration: "Duration",
+    statPhotos: "Photos",
+    lblStage: "Stage",
+    valStage: "High School",
+    lblYear: "Academic year",
+    lblValue: "Value",
+    valValue: "Safe Navigation",
+    lblActivity: "Activity",
+    valActivity: "Productive Activities",
+    topicsTitle: "Topics covered",
+    t1: "Investing and managing time",
+    t2: "Time in the Qur’an and Sunnah",
+    t3: "Balanced digital navigation",
+    t4: "Privacy and security",
+    t5: "Communication etiquette",
+    t6: "Digital awareness",
+    deckTitle: "Productive Activities",
+    deckSub: "High School · Academic Year 2026–2027",
+    photosTitle: "Activity photos",
+    photosSub: "Select a photo to see it in the presentation",
+    photoLabel: "Photo",
+    footer: "© 2026–2027 Middle East International School · Compulsory Subjects Department",
     play: "Play Presentation",
     replay: "Replay",
+    slidesWord: "slides",
     hintSpace: "Space",
     hintSpaceText: "Play / Pause",
     hintArrows: "Arrows",
@@ -497,44 +276,48 @@ const dict = {
 let currentLang = 'ar';
 
 function setLanguage(lang) {
+  if (!dict[lang]) lang = 'ar';
   currentLang = lang;
-  const html = document.documentElement;
+  const d = dict[lang], html = document.documentElement;
   html.setAttribute('lang', lang);
   html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-  
-  // Mise à jour des boutons de langue
+  document.title = d.docTitle;
+
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
+    const on = btn.dataset.lang === lang;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', String(on));
   });
 
-  // Mise à jour des textes de l'interface
-  document.getElementById('ui-title').textContent = dict[lang].title;
-  document.getElementById('ui-sub').textContent = dict[lang].subtitle;
-  document.getElementById('covt').textContent = dict[lang].play;
-  
-  // Mise à jour de l'indication
-  document.getElementById('ui-hint').innerHTML = `
-    <span><b>${dict[lang].hintSpace}</b>${dict[lang].hintSpaceText}</span>
-    <span aria-hidden="true">·</span>
-    <span><b>${dict[lang].hintArrows}</b>${dict[lang].hintArrowsText}</span>
-  `;
-
-  // Mise à jour du texte de l'outro s'il existe
-  const thxEl = document.querySelector('.thx');
-  if (thxEl) thxEl.textContent = dict[lang].outroText;
-
-  // Mise à jour des ARIA labels des miniatures
-  document.querySelectorAll('.th').forEach((th, i) => {
-    th.setAttribute('aria-label', `${dict[lang].slideLabel} ${i + 1}`);
+  // Textes (data-i18n) et attributs (data-i18n-attr="alt:cle,title:cle")
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = d[el.dataset.i18n]; if (v !== undefined) el.textContent = v;
   });
+  document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    el.dataset.i18nAttr.split(',').forEach(pair => {
+      const [attr, key] = pair.split(':'); if (d[key] !== undefined) el.setAttribute(attr, d[key]);
+    });
+  });
+
+  document.getElementById('ui-hint').innerHTML =
+    '<span><b>' + d.hintSpace + '</b>' + d.hintSpaceText + '</span>' +
+    '<span aria-hidden="true">·</span>' +
+    '<span><b>' + d.hintArrows + '</b>' + d.hintArrowsText + '</span>';
+
+  const thx = document.querySelector('.thx'); if (thx) thx.textContent = d.outroText;
+  document.querySelectorAll('.th').forEach((th, i) => th.setAttribute('aria-label', d.slideLabel + ' ' + (i + 1)));
+
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  window.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
 }
+
 
 // ═════════════════════════════════════════════════════════════════
 // 2. LOGIQUE DU DIAPORAMA
 // ═════════════════════════════════════════════════════════════════
 const SLIDES = [
   {"src": "img/s01.jpg", "d": 9, "k": "first"}, 
-  {"src": "img/cards.jpg", "d": 8, "k": "poster"}, 
+  {"src": "img/s20.jpg", "d": 8, "k": "poster"}, 
   {"src": "img/s02.jpg", "d": 8, "k": "doc"}, 
   {"src": "img/s03.jpg", "d": 6, "k": "poster"}, 
   {"src": "img/s04.jpg", "d": 6, "k": "poster"}, 
@@ -554,7 +337,7 @@ const SLIDES = [
   {"src": "img/s18.jpg", "d": 8, "k": "doc"}, 
   {"src": "img/s19.jpg", "d": 6, "k": "poster"}, 
   {"src": "img/ga1.jpg", "d": 24.5, "k": "gallery", "items": ["img/ga1.jpg", "img/ga2.jpg", "img/ga3.jpg", "img/ga4.jpg", "img/gb1.jpg", "img/gb2.jpg", "img/gb3.jpg"]}, 
-  {"src": "img/cards.jpg", "d": 9, "k": "poster"}, 
+  {"src": "img/s20.jpg", "d": 9, "k": "poster"}, 
   {"src": "img/p1_logo.png", "d": 8, "k": "outro"}
 ];
 
@@ -752,7 +535,8 @@ const SLIDES = [
   }
 
   $('ctot').textContent = '/ ' + String(SLIDES.length).padStart(2, '0');
-  $('covs').textContent = SLIDES.length + ' ' + (currentLang === 'ar' ? 'شريحة' : 'slides') + ' · ' + fmt(total);
+  function updateCovs() { if (!ended) $('covs').textContent = SLIDES.length + ' ' + dict[currentLang].slidesWord + ' · ' + fmt(total); }
+  updateCovs();
   
   $('bigplay').onclick = () => { if (ended) { showSlide(0); } play(); };
   $('pp').onclick = () => { if (playing) pause(); else play(); };
@@ -765,7 +549,9 @@ const SLIDES = [
   if (!stage.requestFullscreen) { fsBtn.hidden = true; }
   fsBtn.onclick = () => { try { if (document.fullscreenElement) document.exitFullscreen(); else stage.requestFullscreen().catch(() => {}); } catch(e) {} };
 
+  const kbActive = () => document.fullscreenElement === stage || stage.matches(':hover') || stage.contains(document.activeElement);
   document.addEventListener('keydown', e => {
+    if (!kbActive()) return;
     if (e.target.closest && e.target.closest('button') && (e.key === ' ' || e.key === 'Enter')) return;
     if (e.key === ' ') { e.preventDefault(); if (playing) pause(); else play(); }
     else if (e.key === 'ArrowLeft') { go(idx + 1); }
@@ -776,18 +562,96 @@ const SLIDES = [
   ['pointermove', 'pointerdown', 'keydown'].forEach(ev => stage.addEventListener(ev, wake)); wake();
 
   // Initialisation
-  setLanguage('ar');
+  let startLang = 'ar'; try { startLang = localStorage.getItem('lang') || 'ar'; } catch (e) {}
+  window.addEventListener('langchange', onLang);
+  setLanguage(startLang);
   showSlide(0); setIcon(); $('cover').hidden = false;
   requestAnimationFrame(ts => { last = ts; requestAnimationFrame(tick); });
 
-  // Mettre à jour le texte de la cover quand on change de langue
-  const originalSetLanguage = window.setLanguage;
-  window.setLanguage = function(lang) {
-    originalSetLanguage(lang);
-    if (!ended) {
-      document.getElementById('covs').textContent = SLIDES.length + ' ' + (lang === 'ar' ? 'شريحة' : 'slides') + ' · ' + fmt(total);
-    }
+  // ═══════════════════════════════════════════════════════════════
+  // PAGE DE PROFIL : liens avec le diaporama
+  // ═══════════════════════════════════════════════════════════════
+  const gi = SLIDES.findIndex(s => s.k === 'gallery');
+  const gItems = SLIDES[gi].items;
+
+  // Chiffres clés, calculés à partir des données du diaporama
+  $('f-slides').textContent = SLIDES.length;
+  $('f-dur').textContent = fmt(total);
+  $('f-photos').textContent = gItems.length;
+
+  function onLang() {
+    const d = dict[currentLang];
+    $('covt').textContent = ended ? d.replay : d.play;
+    $('bigplay').setAttribute('aria-label', ended ? d.replay : d.play);
+    updateCovs();
+    document.querySelectorAll('.ph').forEach((b, j) => b.setAttribute('aria-label', d.photoLabel + ' ' + (j + 1)));
+  }
+
+  function scrollToStage() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    stage.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  }
+
+  function startDeck() {
+    if (!playing) { if (ended) showSlide(0); play(); }
+  }
+
+  // Cliquer sur une photo ouvre la bonne image dans la diapositive « galerie »
+  function seekGallery(j) {
+    go(gi);
+    const n = galEls[gi].length;
+    t = Math.floor(j * dur() / n) + 40;
+    syncAudio(); galCur = -1; setGal(gi, j);
+    segFills[gi].style.width = (t / dur() * 100) + '%'; updateTime();
+  }
+
+  const grid = $('photo-grid');
+  gItems.forEach((u, j) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'ph';
+    const im = new Image(); im.src = u; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+    const ov = document.createElement('span'); ov.className = 'ph-play'; ov.setAttribute('aria-hidden', 'true');
+    ov.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l11-6.8a1 1 0 0 0 0-1.8l-11-6.8A1 1 0 0 0 8 5.2z"/></svg>';
+    b.append(im, ov);
+    b.onclick = () => { seekGallery(j); scrollToStage(); };
+    grid.appendChild(b);
+  });
+
+  // Boutons d'action du profil
+  $('pf-play').onclick = () => { startDeck(); scrollToStage(); };
+  $('pf-fs').onclick = () => {
+    startDeck();
+    try { if (stage.requestFullscreen) stage.requestFullscreen().catch(() => {}); } catch (e) {}
   };
+
+  let toastT;
+  function toast(msg) {
+    const el = $('toast'); el.textContent = msg; el.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 2200);
+  }
+  function copyFallback() {
+    const ta = document.createElement('textarea'); ta.value = location.href; ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;opacity:0;top:0'; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast(dict[currentLang].copied); } catch (e) {}
+    ta.remove();
+  }
+  $('pf-share').onclick = async () => {
+    try {
+      if (navigator.share) { await navigator.share({ title: document.title, url: location.href }); return; }
+      await navigator.clipboard.writeText(location.href); toast(dict[currentLang].copied);
+    } catch (e) { if (!e || e.name !== 'AbortError') copyFallback(); }
+  };
+
+  // Barre supérieure : ombre au défilement + onglet actif
+  const tabLinks = Array.from(document.querySelectorAll('.tabs a'));
+  const tabSecs = tabLinks.map(a => document.getElementById(a.dataset.tab));
+  function onScroll() {
+    document.body.classList.toggle('scrolled', window.scrollY > 8);
+    const y = window.innerHeight * 0.4; let cur = 0;
+    tabSecs.forEach((s, i) => { if (s.getBoundingClientRect().top <= y) cur = i; });
+    tabLinks.forEach((a, i) => a.classList.toggle('on', i === cur));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
 })();
 </script>
 
